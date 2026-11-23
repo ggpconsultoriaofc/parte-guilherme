@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Doceria Doce Charme | Doceria artesanal</title>
+  <meta name="description" content="Brigadeiros, beijinhos, cones trufados e mousses feitos à mão, em pequenos lotes.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Poppins:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="navbar.css">
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="produtos.css">
+</head>
+
+<body>
+  <script src="navbar.js"></script>
+  <header class="topo">
+    <a href="#inicio" class="marca" aria-label="Doceria Doce Charme, início">
+      <svg class="marca__logo" viewBox="0 0 48 48" aria-hidden="true">
+        <circle cx="24" cy="24" r="22" fill="none" stroke="#C8963E" stroke-width="1.5" />
+        <path d="M24 9c5 7 9 11.500 9 16.500a9 9 0 0 1-18 0C15 20.500 19 16 24 9z" fill="#3B2417" />
+        <path d="M20 26a5 5 0 0 0 4 5" stroke="#E9C77B" stroke-width="2" fill="none" stroke-linecap="round" />
+      </svg>
+      <span class="marca__nome">Doceria Doce Charme</span>
+    </a>
+
+    <nav class="menu" aria-label="Principal">
+      <a href="#destaques">Carros-chefe</a>
+      <a href="#cardapio">Cardápio</a>
+      <a href="#sobre">Nossa cozinha</a>
+    </nav>
+
+    <button class="carrinho-btn" id="abrirCarrinho" aria-label="Abrir carrinho">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M6 8h12l-1 12H7L6 8z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
+        <path d="M9 8a3 3 0 0 1 6 0" fill="none" stroke="currentColor" stroke-width="1.6" />
+      </svg>
+      <span class="carrinho-btn__contador" id="contador">0</span>
+    </button>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero__texto">
+        <h1>Doce de verdade,<br>enrolado à mão.</h1>
+        <p>Brigadeiros cozidos no ponto, beijinhos de coco fresco e sobremesas de colher. Tudo feito em pequenos lotes,
+          no dia, com chocolate de verdade.</p>
+        <a href="#destaques" class="btn btn--ouro">Ver os carros-chefe</a>
+      </div>
+      <div class="hero__imagem">
+        <img src="./img/brigadeiro.jpg" alt="Três brigadeiros tradicionais com granulado de chocolate">
+        <span class="selo">feito<br>à mão<br>todo dia</span>
+      </div>
+    </section>
+
+    <section class="secao" id="destaques">
+      <header class="secao__cab">
+        <h2>Os queridinhos da casa</h2>
+        <p>Os dois doces que mais saem da nossa cozinha.</p>
+      </header>
+      <div class="destaques" id="gradeDestaques"></div>
+    </section>
+
+    <section class="secao secao--creme" id="cardapio">
+      <header class="secao__cab">
+        <h2>O restante do cardápio</h2>
+        <p>Para completar a caixa, a mesa ou o dia.</p>
+      </header>
+      <div class="grade" id="gradeProdutos"></div>
+    </section>
+
+    <section class="sobre" id="sobre">
+      <p class="sobre__frase">“Cada brigadeiro leva o tempo do fogo baixo e o carinho de quem mexe a panela.”</p>
+      <p class="sobre__apoio">Cozinhamos em pequenas quantidades para que tudo chegue fresquinho. Encomendas para
+        festas, casamentos e presentes.</p>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <div>
+      <strong>Doceria Doce Charme</strong>
+      <p>Doceria artesanal</p>
+    </div>
+    <p class="rodape__nota">Imagens ilustrativas. Pedidos feitos aqui são uma simulação.</p>
+  </footer>
+
+  <div class="veu" id="veu"></div>
+  <aside class="gaveta" id="gaveta" aria-label="Carrinho de compras" aria-hidden="true">
+    <header class="gaveta__cab">
+      <h2>Seu pedido</h2>
+      <button class="fechar" id="fecharCarrinho" aria-label="Fechar carrinho">&times;</button>
+    </header>
+
+    <div class="gaveta__corpo" id="itensCarrinho"></div>
+
+    <footer class="gaveta__rodape" id="rodapeCarrinho">
+      <div class="total"><span>Total</span><strong id="total">R$ 0,00</strong></div>
+
+      <label for="pagamento">Forma de pagamento</label>
+      <select id="pagamento">
+        <option value="Pix">Pix</option>
+        <option value="Cartão de Crédito">Cartão de Crédito</option>
+        <option value="Cartão de Débito">Cartão de Débito</option>
+        <option value="Dinheiro">Dinheiro</option>
+      </select>
+
+      <button class="btn btn--cacau btn--cheio" id="finalizar">Finalizar pedido</button>
+    </footer>
+  </aside>
+
+  <dialog id="confirmacao" class="confirmacao">
+    <h3>Pedido confirmado!</h3>
+    <p id="confirmacaoTexto"></p>
+    <button class="btn btn--ouro" id="fecharConfirmacao">Voltar ao cardápio</button>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

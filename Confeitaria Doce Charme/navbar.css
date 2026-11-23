@@ -1,0 +1,218 @@
+.navbar {
+  --nb-bg: #fff3f5;          
+  --nb-wine: #5a1d33;        
+  --nb-berry: #b8234f;       
+  --nb-berry-dark: #9c1c42;  
+  --nb-blush: #f8dfe5;       
+  --nb-border: #ecc9d2;      
+  --nb-dash: #d9b88a;        
+  --nb-sage: #dcebd9;        
+  --nb-brown: #6b2a1c;       
+  --nb-height: 72px;
+  --nb-bp: 720px;            
+
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--nb-bg);
+  border-bottom: 1px dashed var(--nb-dash);
+  font-family: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.navbar *,
+.navbar *::before,
+.navbar *::after {
+  box-sizing: border-box;
+}
+
+.navbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: 1120px;
+  height: var(--nb-height);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.navbar__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--nb-brown);
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.55rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  border-radius: 12px;
+}
+
+.navbar__logo-icon {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+}
+
+.navbar__menu {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navbar__link {
+  display: block;
+  padding: 0.55rem 1.15rem;
+  border-radius: 999px;
+  color: var(--nb-wine);
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.navbar__link:hover {
+  background: var(--nb-blush);
+  color: var(--nb-berry);
+}
+
+.navbar__link[aria-current="page"] {
+  background: var(--nb-berry);
+  color: #fff;
+  font-weight: 700;
+}
+
+.navbar__link[aria-current="page"]:hover {
+  background: var(--nb-berry-dark);
+  color: #fff;
+}
+
+.navbar__logo:focus-visible,
+.navbar__link:focus-visible,
+.navbar__toggle:focus-visible {
+  outline: 2px solid var(--nb-berry);
+  outline-offset: 3px;
+}
+
+.navbar__toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  padding: 0;
+  background: #fff;
+  border: 1px solid var(--nb-border);
+  border-radius: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.navbar__toggle:hover {
+  background: var(--nb-blush);
+}
+
+.navbar__bars,
+.navbar__bars::before,
+.navbar__bars::after {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--nb-wine);
+  border-radius: 2px;
+  transition: transform 0.25s ease, background-color 0.2s ease;
+}
+
+.navbar__bars {
+  position: relative;
+}
+
+.navbar__bars::before,
+.navbar__bars::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.navbar__bars::before { top: -6px; }
+.navbar__bars::after  { top: 6px; }
+
+.navbar.is-open .navbar__bars {
+  background: transparent;
+}
+
+.navbar.is-open .navbar__bars::before {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.navbar.is-open .navbar__bars::after {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+@media (max-width: 960px) {
+  .navbar__inner { padding: 0 1.25rem; }
+  .navbar__link  { padding: 0.5rem 0.95rem; }
+}
+
+@media (max-width: 720px) {
+  .navbar {
+    --nb-height: 64px;
+  }
+
+  .navbar__inner {
+    padding: 0 1rem;
+  }
+
+  .navbar__logo      { font-size: 1.35rem; }
+  .navbar__logo-icon { width: 36px; height: 36px; }
+
+  .navbar__toggle {
+    display: inline-flex;
+  }
+
+  .navbar__menu {
+    position: absolute;
+    top: calc(100% + 0.6rem);
+    left: 1rem;
+    right: 1rem;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.25rem;
+    padding: 0.6rem;
+    background: #fff;
+    border: 1px solid var(--nb-border);
+    border-radius: 20px;
+    box-shadow: 6px 6px 0 var(--nb-sage);
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0.2s;
+  }
+
+  .navbar.is-open .navbar__menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s;
+  }
+
+  .navbar__link {
+    padding: 0.85rem 1rem;
+    border-radius: 14px;
+    font-size: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar *,
+  .navbar *::before,
+  .navbar *::after {
+    transition: none !important;
+  }
+}
